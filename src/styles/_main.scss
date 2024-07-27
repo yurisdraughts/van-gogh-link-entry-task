@@ -75,7 +75,7 @@ $product: product;
 
     @media (min-width: $tablet-width) {
       --margin-inline: 31px;
-      display: none;
+      opacity: 0;
       width: calc(100% - 2 * var(--margin-inline));
       height: initial;
       border-radius: 100px;
@@ -86,9 +86,9 @@ $product: product;
       color: #ffffff;
       background-color: #e45302;
 
-      .#{$product}__img-wrapper:hover & {
+      .#{$product}__img-wrapper:hover &, &:focus {
         @media (min-width: $tablet-width) {
-          display: block;
+          opacity: 1;
         }
       }
     }
