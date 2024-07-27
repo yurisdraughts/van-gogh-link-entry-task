@@ -109,10 +109,15 @@
     position: relative;
   }
 
-  &__form {
+  &__form,
+  &__search-btn {
     position: absolute;
-    top: 0;
+    top: 50%;
     right: 0;
+    transform: translateY(-50%);
+  }
+
+  &__form {
     height: 39px;
 
     &[data-search-bar="closed"] {
@@ -121,7 +126,6 @@
   }
 
   &__input {
-    // position: absolute;
     top: 0;
     right: 0;
     display: block;
@@ -135,9 +139,6 @@
   }
 
   &__search-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
     border-radius: 50%;
     padding: 8.86px;
   }
