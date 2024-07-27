@@ -1,0 +1,136 @@
+@use "./variables" as *;
+
+.footer {
+  background-color: #0c0c0c;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1;
+  color: #e8e8e8;
+
+  &__logo {
+    display: block;
+    width: 180px;
+    height: auto;
+  }
+
+  &__heading {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: inherit;
+    margin-bottom: 10px;
+
+    &_services {
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: $tablet-width) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__dark {
+    color: #808080;
+  }
+
+  &__list {
+    display: grid;
+    gap: 20px;
+
+    &_services {
+      @media (min-width: $tablet-width) {
+        gap: 30px;
+      }
+
+      @media (min-width: $desktop-width) {
+        gap: 20px;
+      }
+    }
+  }
+}
+
+.footer-wrapper {
+  display: grid;
+  gap: 30px;
+
+  &__contacts-list {
+    display: grid;
+    gap: 25px;
+  }
+
+  &__cards {
+    display: flex;
+    align-items: center;
+    gap: 33px;
+    margin-top: 42px;
+
+    @media (min-width: $tablet-width) {
+      margin-top: 0;
+    }
+  }
+
+  @media (min-width: $tablet-width) {
+    grid-template-areas:
+      "logo logo logo"
+      "address contacts services"
+      "legal-links legal-links services"
+      "cards legal-text legal-text";
+
+    column-gap: 40px;
+    row-gap: 35px;
+
+    &__logo {
+      grid-area: logo;
+    }
+
+    &__address {
+      grid-area: address;
+      width: 210px;
+    }
+
+    &__contacts {
+      grid-area: contacts;
+      width: 246px;
+    }
+
+    &__services {
+      grid-area: services;
+      width: 140px;
+    }
+
+    &__legal-links {
+      grid-area: legal-links;
+    }
+
+    &__cards {
+      grid-area: cards;
+    }
+
+    &__legal-text {
+      grid-area: legal-text;
+      justify-self: end;
+      width: 382px;
+    }
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-template-areas:
+      "logo address services legal-links"
+      "legal-text contacts services cards";
+
+    column-gap: 70px;
+
+    &__legal-links {
+      text-align: right;
+    }
+
+    &__cards {
+      justify-self: end;
+    }
+
+    &__legal-text {
+      justify-self: start;
+      width: 322px;
+    }
+  }
+}

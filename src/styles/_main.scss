@@ -1,0 +1,151 @@
+@use "./variables" as *;
+
+.main {
+  line-height: 1.4;
+
+  &__heading {
+    font-family: "Korataki", sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #231815;
+  }
+}
+
+.products {
+  --column-width: 155px;
+  display: grid;
+  grid-template-columns: var(--column-width) repeat(
+      auto-fit,
+      var(--column-width)
+    );
+  justify-content: space-between;
+  gap: 30px 10px;
+
+  @media (min-width: $tablet-width) {
+    --column-width: 320px;
+    gap: 50px 40px;
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+$product: product;
+.#{$product} {
+  width: 100%;
+  color: #231815;
+
+  &__img {
+    border-radius: 9.73px;
+    width: 100%;
+
+    @media (min-width: $tablet-width) {
+      border-radius: 20px;
+    }
+  }
+
+  &__img-wrapper {
+    position: relative;
+
+    &_sale::before {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      content: "Акция";
+      display: block;
+      border-radius: 100px;
+      padding: 2px 14.5px;
+      width: 70px;
+      height: 24px;
+      font-size: 0.875rem;
+      color: #ffffff;
+      background-color: #231815;
+    }
+  }
+
+  &__info-link {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: transparent;
+
+    @media (min-width: $tablet-width) {
+      --margin-inline: 31px;
+      display: none;
+      width: calc(100% - 2 * var(--margin-inline));
+      height: initial;
+      border-radius: 100px;
+      margin: 20px var(--margin-inline);
+      padding-block: 13px;
+      text-align: center;
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #e45302;
+
+      .#{$product}__img-wrapper:hover & {
+        @media (min-width: $tablet-width) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__price-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @media (min-width: $tablet-width) {
+      gap: 16px;
+    }
+  }
+
+  &__description,
+  &__price {
+    font-size: 1rem;
+
+    @media (min-width: $tablet-width) {
+      font-size: 1.125rem;
+    }
+  }
+
+  &__price {
+    margin-bottom: 3px;
+
+    &_new {
+      color: #e45302;
+    }
+
+    &_old {
+      margin-bottom: 0;
+      font-size: 0.875rem;
+      color: #808080;
+      text-decoration: line-through;
+    }
+
+    @media (min-width: $tablet-width) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__description {
+    margin-block: 10px 11px;
+    font-weight: 500;
+
+    @media (min-width: $tablet-width) {
+      margin-top: 20px;
+      font-weight: 700;
+    }
+  }
+
+  &__price-value {
+    font-weight: 700;
+  }
+
+  &__currency-sign {
+    font-weight: 600;
+  }
+}

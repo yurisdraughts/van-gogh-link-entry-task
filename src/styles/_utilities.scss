@@ -1,0 +1,44 @@
+@use "./variables" as *;
+
+.container {
+  margin: 0 auto;
+  padding: 35px 40px;
+  max-width: 1400px;
+
+  @media (min-width: $tablet-width) {
+    padding: 44px 50px;
+  }
+
+  @media (min-width: $desktop-width) {
+    padding: 60px 180px;
+  }
+
+  &_top-header {
+    padding-block: 12px;
+  }
+
+  &_header {
+    padding-block: 10px;
+  }
+}
+
+.list {
+  list-style-type: none;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+
+  &_underline {
+    text-decoration: underline;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.select-all {
+  user-select: all;
+}

@@ -1,0 +1,123 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width,initial-scale=1')
+    title Document
+    link(rel='stylesheet', href='style.css')
+    script(defer src='./script.js')
+  body 
+    header.header
+      .header-top-nav
+        .container.container_top-header.header__wrapper
+          .header-top-nav__wrapper
+            - const topLinksDesktop = ["Доставка и оплата", "Гарантия и возврат", "EN"];
+            each link in topLinksDesktop
+              a.link(href='#')= link
+      .container.container_header.header__wrapper
+        a(href='#')
+          img.header__logo(src='./images/Logo Black.svg', width='217', height='36', alt='Urban Dwelling')
+        nav.header__nav.header-nav
+          ul.list.header-nav__list
+            - const topLinks = ["Каталог", "О компании", "Контакты"];
+            each link in topLinks
+              li
+                a.header-nav__link.link(href='#')= link
+        .search-corner
+          .search-corner__wrapper
+            form.search-corner__form(data-search-bar='closed')
+              input.search-corner__input#search(type='text', name='search-query')
+              input.search-corner__search-btn(type='image', src='./images/search-active.svg', alt='Поиск', width='21.27', height='21.27')
+            button.search-btn(type='button', data-search-bar='closed')
+              img.search-btn__img(src='./images/search-normal.svg', alt='Поиск', width='21.27', height='21.27')
+          a.search-corner__basket(href='#')
+            .search-corner__basket-icon
+              img(src='./images/Bag.svg', alt='Иконка корзины', width='32.67', height='32')
+            span Корзина
+        button.menu-btn(type='button')
+          img.menu-btn__icon(src='./images/Menu Button.svg', width='40', height='24', alt='Иконка меню')
+    main.main.page__main
+      .container
+        h1.main__heading Результаты поиска
+        .products
+          -
+            const products = [
+              { name: "SuperDZS Аэрогриль efRP6iSi", imgSrc: "./images/product1.png", price: 3040 },
+              { name: "Линейный светильник ARG", imgSrc: "./images/product2.png", price: 6700 },
+              { name: "Сведодиодный светильник", imgSrc: "./images/product3.png", price: 5060, oldPrice: 6060 },
+              { name: "SuperDZS Аэрогриль efRP6iSi", imgSrc: "./images/product1.png", price: 3040 },
+              { name: "Линейный светильник ARG", imgSrc: "./images/product2.png", price: 6700 },
+              { name: "Сведодиодный светильник", imgSrc: "./images/product3.png", price: 5060, oldPrice: 6060 },
+              { name: "Линейный светильник ARG", imgSrc: "./images/product2.png", price: 6700 },
+              { name: "SuperDZS Аэрогриль efRP6iSi", imgSrc: "./images/product1.png", price: 3040 },
+            ];
+          each product in products 
+            article.product
+              .product__img-wrapper
+                img.product__img(src=product.imgSrc alt=product.name)
+                a.product__info-link(href='#') Подробнее
+              h2.product__description= product.name
+              .product__price-wrapper
+                -
+                  function formatPrice(price) {
+                    const priceStr = product.price.toString();
+                    const last3Digits = priceStr.slice(-3);
+                    const firstDigits = priceStr.slice(0, -3);
+                    return [firstDigits, last3Digits];
+                  }
+                p.product__price(class=product.oldPrice ? "product__price_new" : "")
+                  - const price = formatPrice(product.price);
+                  span.product__price-value= `${price[0]} ${price[1]}`
+                  span.product__currency-sign ₽
+                if product.oldPrice
+                  p.product__price.product__price_old
+                    - const price = formatPrice(product.oldPrice);
+                    span.product__price-value= `${price[0]} ${price[1]}`
+                    span.product__currency-sign ₽
+    footer.footer
+      .container.footer-wrapper
+        a.footer-wrapper__logo(href='#')
+          img.footer__logo(src='./images/Logo White.svg', width='239', height='62.1', alt='Urban Dwelling')
+        section.footer-wrapper__address
+          h2.footer__heading Адрес
+          p Текст, Текст, Текст
+        section.footer-wrapper__contacts
+          h2.footer__heading Контакты
+          ul.list.footer__list.footer-wrapper__contacts-list
+            li
+              | Email: 
+              span.select-all urban.dwelling@yandex.com
+            li
+              | Телефон: 
+              span.select-all 8 (999) 999-99-99
+        section.footer-wrapper__services
+          h2.footer__heading.footer__heading_services Услуги
+          nav
+            ul.list.footer__list.list.footer__list_services
+              - const footerLinks = ["Каталог", "О компании", "Контакты", "Доставка и оплата", "Гарантия и возврат"];
+              each link in footerLinks
+                li
+                  a.link(href='#')= link
+        .footer-wrapper__legal-links.footer__dark
+          nav
+            ul.list.footer__list
+              - const footerLegalLinks = ["Публичная оферта", "Политика персональных данных"];
+              each link in footerLegalLinks
+                li
+                  a.link(href='#')= link
+        ul.footer-wrapper__cards.list.footer__list(role='list')
+          -
+            const cards = [
+              { src: "./images/Mir.svg", alt: "Мир", w: 46, h: 13 },
+              { src: "./images/Visa.svg", alt: "Visa", w: 45, h: 14 },
+              { src: "./images/Master Card.svg", alt: "Visa", w: 48.33, h: 29 },
+            ];
+          each card in cards 
+            li
+              img(src=card.src, alt=card.alt, width=card.w, height=card.h)
+        p.footer-wrapper__legal-text.footer__dark
+          | Этот сайт защищен от спама службой reCAPTCHA Google.
+
+          a.link.link_underline(href='#') Политика конфиденциальности
+          | /
+          a.link.link_underline(href='#') Условия предоставления услуг
