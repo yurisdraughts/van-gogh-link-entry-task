@@ -39,6 +39,7 @@ $product: product;
   &__img {
     border-radius: 9.73px;
     width: 100%;
+    height: auto;
 
     @media (min-width: $tablet-width) {
       border-radius: 20px;

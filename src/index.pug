@@ -42,19 +42,61 @@ html(lang="en")
         .products
           -
             const products = [
-              { name: "SuperDZS Аэрогриль efRP6iSi", imgSrc: "./images/product1.png", price: 3040 },
-              { name: "Линейный светильник ARG", imgSrc: "./images/product2.png", price: 6700 },
-              { name: "Сведодиодный светильник", imgSrc: "./images/product3.png", price: 5060, oldPrice: 6060 },
-              { name: "SuperDZS Аэрогриль efRP6iSi", imgSrc: "./images/product1.png", price: 3040 },
-              { name: "Линейный светильник ARG", imgSrc: "./images/product2.png", price: 6700 },
-              { name: "Сведодиодный светильник", imgSrc: "./images/product3.png", price: 5060, oldPrice: 6060 },
-              { name: "Линейный светильник ARG", imgSrc: "./images/product2.png", price: 6700 },
-              { name: "SuperDZS Аэрогриль efRP6iSi", imgSrc: "./images/product1.png", price: 3040 },
+              { name: "SuperDZS Аэрогриль efRP6iSi",
+                imgSrc: "./images/product1.png",
+                mobileImg: "./images/product1-mobile.png",
+                price: 3040
+              },
+              { name: "Линейный светильник ARG",
+                imgSrc: "./images/product2.png",
+                mobileImg: "./images/product2-mobile.png",
+                price: 6700
+              },
+              { name: "Сведодиодный светильник",
+                imgSrc: "./images/product3.png",
+                mobileImg: "./images/product3-mobile.png",
+                price: 5060,
+                oldPrice: 6060
+              },
+              { name: "SuperDZS Аэрогриль efRP6iSi",
+                imgSrc: "./images/product1.png",
+                mobileImg: "./images/product1-mobile.png",
+                price: 3040
+              },
+              { name: "Линейный светильник ARG",
+                imgSrc: "./images/product2.png",
+                mobileImg: "./images/product2-mobile.png",
+                price: 6700
+              },
+              { name: "Сведодиодный светильник",
+                imgSrc: "./images/product3.png",
+                mobileImg: "./images/product3-mobile.png",
+                price: 5060,
+                oldPrice: 6060
+              },
+              { name: "Линейный светильник ARG",
+                imgSrc: "./images/product2.png",
+                mobileImg: "./images/product2-mobile.png",
+                price: 6700
+              },
+              { name: "SuperDZS Аэрогриль efRP6iSi",
+                imgSrc: "./images/product1.png",
+                mobileImg: "./images/product1-mobile.png",
+                price: 3040
+              },
             ];
           each product in products 
             article.product
               .product__img-wrapper
-                img.product__img(src=product.imgSrc alt=product.name)
+                img.product__img(
+                  srcset=`${product.imgSrc} 640w, ${product.mobileImg} 155w`
+                  sizes=`(min-width: 768px) 640px,
+                  155px`
+                  src=product.imgSrc,
+                  alt=product.name,
+                  width="320",
+                  height="477"
+                )
                 a.product__info-link(href='#') Подробнее
               h2.product__description= product.name
               .product__price-wrapper
